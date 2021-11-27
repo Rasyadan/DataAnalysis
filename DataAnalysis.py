@@ -108,3 +108,29 @@ print("Distribusi frekuensi pada kolom Metrics.Review Score")
 disf = Data["Metrics.Review Score"].value_counts()
 print(f"Distribusi frekuensi review score : {disf}")
 print("=" * 50)
+
+#Visualisasi Data
+
+# Histogram dari Review Score untuk mengetahui persebaran data
+df_review_sorted = Data.sort_values(["Metrics.Review Score"], ascending=[1])
+df_review_sorted["Metrics.Review Score"].plot(kind="hist",bins=[0,10,20,30,40,50,60,70,80,90,100], rwidth = 0.8, title = "Histogram of Review Score", xlabel = "Review Score", legend = True)
+plt.legend(["Review Score"])
+plt.show()
+
+# Line graph untuk mengetahui perkembangan review score dari tahun ke tahun
+year_mean_review_score = (Data.groupby("Release.Year")["Metrics.Review Score"].mean())
+df2 = year_mean_review_score
+df2.plot(kind="line", x="Release.Year", legend=True, xlabel = "Release Year", ylabel = "Review Score", title ="Review Score Setiap Tahun")
+plt.legend(["Review Score"])
+plt.show()
+
+# Pie chart dari rating game untuk mengetahui hierarki dan hubungan keseluruhan bagian
+df3 = Data["Release.Rating"].value_counts()
+df3.plot(kind="pie", title="Pie Chart of Game Ratings", y="Release Rating", legend=True)
+plt.legend(["Everyone", "Teen", "Mature"])
+plt.show()
+
+# Scatter plot dari review score dan total penjualan untuk mengetahui hubungan antar keduanya
+df4 = Data
+df4.plot(kind="scatter", x="Metrics.Review Score",xlabel = "Review Score", y="Metrics.Sales", ylabel = "Total Penjualan (Miliar USD)", title ="Scatter Plot Review Score dan Total Penjualan")
+plt.show()
