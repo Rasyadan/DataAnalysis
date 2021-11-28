@@ -2,8 +2,10 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 #Loading data dan mengetahui informasi data
-
-file_location = "D:/Fajri/Downloads/video_games.csv"
+#============================================================================
+#PASTIKAN FILE "video_games.csv" ADA DI FOLDER YANG SAMA DENGAN KODE PROGRAM
+#============================================================================
+file_location = "video_games.csv"
 
 #Deskripsi Data dan File
 print("TUGAS 3: Deskripsi Data dan File")
