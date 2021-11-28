@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 
 file_location = "D:/Fajri/Downloads/video_games.csv"
 
+#Deskripsi Data dan File
+print("TUGAS 3: Deskripsi Data dan File")
+print("="*50)
 Data = pd.read_csv(file_location)
 data_size = os.path.getsize(file_location)//1024
 data_type = os.path.splitext(file_location)[1]
@@ -17,6 +20,7 @@ print("Dimensi dari data :",data_info[0],"Baris dan",data_info[1],"Kolom")
 print("=" * 50)
 
 #Karakteristik Data
+print("TUGAS 4 : Karakteristik Data")
 data_columns = Data.info()
 print(data_columns)
 print("=" * 50)
@@ -110,7 +114,7 @@ print(f"Distribusi frekuensi review score : {disf}")
 print("=" * 50)
 
 #Visualisasi Data
-
+print("TUGAS 6 : Visualisasi Data")
 # Histogram dari Review Score untuk mengetahui persebaran data
 df_review_sorted = Data.sort_values(["Metrics.Review Score"], ascending=[1])
 df_review_sorted["Metrics.Review Score"].plot(kind="hist",bins=[0,10,20,30,40,50,60,70,80,90,100], rwidth = 0.8, title = "Histogram of Review Score", xlabel = "Review Score", legend = True)
@@ -131,6 +135,16 @@ plt.legend(["Everyone", "Teen", "Mature"])
 plt.show()
 
 # Scatter plot dari review score dan total penjualan untuk mengetahui hubungan antar keduanya
+df4 = Data
+df4.plot(kind="scatter", x="Metrics.Review Score",xlabel = "Review Score", y="Metrics.Sales", ylabel = "Total Penjualan (Miliar USD)", title ="Scatter Plot Review Score dan Total Penjualan")
+plt.show()
+
+#Korelasi review score dengan total penjualan
+print("TUGAS 7 : Korelasi")
+correlation = df4["Metrics.Review Score"].corr(df4["Metrics.Sales"])
+print("Koefisien korelasinya adalah " + str(correlation))
+print("="*50)
+#Visualisasi korelasi dengan scatter plot
 df4 = Data
 df4.plot(kind="scatter", x="Metrics.Review Score",xlabel = "Review Score", y="Metrics.Sales", ylabel = "Total Penjualan (Miliar USD)", title ="Scatter Plot Review Score dan Total Penjualan")
 plt.show()
